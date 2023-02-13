@@ -7,7 +7,7 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Post('entry')
-  async publishData(@Body() data: ProducerModel): Promise<boolean> {
+  async publishData(@Body() data: ProducerModel): Promise<any> {
     return await this.appService.publishMessage(data);
   }
 }

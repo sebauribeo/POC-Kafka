@@ -7,7 +7,10 @@ export class AppService {
   public logger = new Logger(AppService.name);
 
   constructor(private readonly kafkaProducerService: ProducerService) {}
-  publishMessage(message: ProducerModel): Promise<boolean> {
-    return this.kafkaProducerService.publish(message);
+  publishMessage(message: ProducerModel): any {
+    this.kafkaProducerService.publish(message);
+    return {
+      guid: message.document.header.guid,
+    };
   }
 }
